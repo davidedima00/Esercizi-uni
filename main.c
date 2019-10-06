@@ -39,78 +39,55 @@ int main()
     /*Dichiaro e inizializzo tutti i tipi di variabili possibili con DOUBLE*/
     float vFloat=1.2134541345f;
     double vDouble=1.256789178f;
-    long double lDouble=1.23545899654f;
 
 
     int carStampati; //dichiaro una variabile per inserire allinterno i caratteri stampati dal printf
 
     /*STAMPO LE COMBINAZIONI PER IL TIPO CHAR*/
     carStampati=printf("TYPE: %-19s | VALUE: %15c | ALLOCATED: %2d byte | MAX_VALUE: %012d | MIN_VALUE: %012d","CHAR",carattere,sizeof(char),CHAR_MAX,CHAR_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15c | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","UNSIGNED CHAR",uChar,sizeof(unsigned char),UCHAR_MAX,0);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15c | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","SIGNED CHAR",sChar,sizeof(signed char),SCHAR_MAX,SCHAR_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
 
 
     carStampati=printf("TYPE: %-19s | VALUE: %15d | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","INT",vInt,sizeof(int),INT_MAX,INT_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15u | ALLOCATED: %2d byte | MAX_VALUE: %12u | MIN_VALUE: %12d","UNSIGNED INT",uInt,sizeof(unsigned int),UINT_MAX,0);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15i | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","SIGNED INT",sInt,sizeof(signed int),INT_MAX,INT_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15d | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","SHORT INT",shortInt,sizeof(short int),SHRT_MAX,SHRT_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15u | ALLOCATED: %2d byte | MAX_VALUE: %12u | MIN_VALUE: %12u","UNSIGNED SHORT INT",usInt,sizeof(unsigned short int),USHRT_MAX,0);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %15d | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","SIGNED SHORT INT",ssInt,sizeof(signed short int),SHRT_MAX,SHRT_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
-    carStampati=printf("TYPE: %-19s | VALUE: %15d | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","LONG INT",lInt,sizeof(long int),LONG_MAX,LONG_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    carStampati=printf("TYPE: %-19s | VALUE: %15ld | ALLOCATED: %2d byte | MAX_VALUE: %12ld | MIN_VALUE: %12ld","LONG INT",lInt,sizeof(long int),LONG_MAX,LONG_MIN);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
-    carStampati=printf("TYPE: %-19s | VALUE: %15u | ALLOCATED: %2d byte | MAX_VALUE: %12u | MIN_VALUE: %12d","UNSIGNED LONG INT",ulInt,sizeof(unsigned long int),ULONG_MAX,0);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    carStampati=printf("TYPE: %-19s | VALUE: %15lu | ALLOCATED: %2d byte | MAX_VALUE: %12lu | MIN_VALUE: %12d","UNSIGNED LONG INT",ulInt,sizeof(unsigned long int),ULONG_MAX,0);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
-    carStampati=printf("TYPE: %-19s | VALUE: %15d | ALLOCATED: %2d byte | MAX_VALUE: %12d | MIN_VALUE: %12d","SIGNED LONG INT",slInt,sizeof(signed long int),LONG_MAX,LONG_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    carStampati=printf("TYPE: %-19s | VALUE: %15ld | ALLOCATED: %2d byte | MAX_VALUE: %12ld | MIN_VALUE: %12ld","SIGNED LONG INT",slInt,sizeof(signed long int),LONG_MAX,LONG_MIN);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
 
     carStampati=printf("TYPE: %-19s | VALUE: %16.8f| ALLOCATED: %2d byte | MAX_VALUE: %12.4e | MIN_VALUE: %12.4e","FLOAT",vFloat,sizeof(float),FLT_MAX,FLT_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     carStampati=printf("TYPE: %-19s | VALUE: %16.8lf| ALLOCATED: %2d byte | MAX_VALUE: %12.4e | MIN_VALUE: %12.4e","DOUBLE",vDouble,sizeof(double),DBL_MAX,DBL_MIN);
-    printf(" | CHARS PRINTED: %-03d\n",carStampati);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    printf(" | CHARS PRINTED: %-3d\n",carStampati);
 
     return 0;
 }
