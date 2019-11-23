@@ -15,11 +15,11 @@ int main()
     if (arrayPrimi==NULL){ //se arrayPrimi ritorna NULL vuol dire che non c'è spazio in memoria per allocare il vettore
         printf("Spazio in memoria insufficiente");
     }
-
+    //chiedo all'utente di inserire il valore massimo
     while (max<=1 || max>10000){
         printf("Inserisci fino a che valore vuoi trovare i numeri primi(MIN. 2 - MAX. 10'000): ");
         verifica=scanf("%d",&max);
-        if (verifica!=1){
+        if (verifica!=1){ //verifico il valore di ritorno della scanf
             printf("\nValore inserito errato, chiusura programma\n");
             return 0;
         }
@@ -51,14 +51,14 @@ int main()
                         dim*=2; //raddoppio la dimensione del vettore allocato
                         arrayPrimi=(unsigned int*)realloc(arrayPrimi,dim*sizeof(unsigned int)); //rialloco il doppio dello spazio del vettore
                     }
-                   *(arrayPrimi+nPrimi)=n;
+                   *(arrayPrimi+nPrimi)=n; //aggiungo il numero nell'array di numeri primi
                 }
             }
     }
     for (int index=0;index<=nPrimi;index++){
             printf("%d%c",*(arrayPrimi+index), index==nPrimi ? ' ': '-'); //printo i numeri primi
     }
-    free(arrayPrimi);
+    free(arrayPrimi); //libero lo spazio in memoria allocato da arrayPrimi
     getchar();
     return 0;
 }
