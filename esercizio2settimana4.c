@@ -23,6 +23,7 @@ int main()
             printf("\nValore inserito errato, chiusura programma\n");
             return 0;
         }
+        fflush(stdin);
         //verifico se il valore entra nel range permesso
         if (max<2){
             printf("Inserisci un numero maggiore di 1\n");
