@@ -38,6 +38,7 @@ Note: Gestione corso di laurea
 void ottieniInfo(int matricola); //TRAMITE LA MATRICOLA OTTIONE LE INFORMAZIONI DELLA MATRICOLA SELEZIONATA
 void aggiungiStudente();
 void mediaStudenti();
+void modificaPianoStudi(int matricola);
 //VARIABILI GLOBALI
 STUDENTE studenti[NUM_STUDENTI];
 INSEGNAMENTO insegnamenti[NUM_ESAMI]={{819,12,"Programmazione",1},
@@ -54,9 +55,11 @@ int main()
     int scelta=0;
     bool fine=false;
     while (fine == false){
-        printf("Che operazione vuoi effettuare?\nPer AGGIUNGERE UN NUOVO STUDENTE digita '1'\n"
-               "Per OTTENERE INFORMAZIONI DI UNO STUDENTE digita '2'\n"
-               "Per CONOSCERE LA MEDIA DI TUTTI GLI STUDENTI CHE HANNO COMPLETATO IL CORSO digita '3'\n"
+        printf("Che operazione vuoi effettuare?\n"
+               "Per AGGIUNGERE UN NUOVO STUDENTE                                           -----------> digita '1'\n"
+               "Per OTTENERE INFORMAZIONI DI UNO STUDENTE                                  -----------> digita '2'\n"
+               "Per CONOSCERE LA MEDIA DI TUTTI GLI STUDENTI CHE HANNO COMPLETATO IL CORSO -----------> digita '3'\n"
+               "Per MODIFICARE IL PIANO DI STUDI DI UNO STUDENTE (AGGIUNGERE UN VOTO)      -----------> digita '4'\n"
                "Per USCIRE DAL PROGRAMMA digita un numero a scelta");
         scelta=0;
         verifica=0;
@@ -68,11 +71,6 @@ int main()
                 printf("Valore inserito errato");
                 continue;
             }
-            if (scelta<1 || scelta>3){
-                printf("\nValore inserito errato");
-                scelta=0;
-                return 0;
-            }
             int matricola;
             switch(scelta){
                 case 1:
@@ -81,7 +79,7 @@ int main()
                 case 2:
                     verifica=0;
                     while (matricola<1 || matricola>99999 || verifica==0){
-                        printf("Inserisci il numero di matricola dello studente da cercare: ");
+                        printf("Inserisci il numero di matricola dello studente: ");
                         verifica=scanf("%d",&matricola);
                         fflush(stdin);
                         if (verifica!=1){
@@ -95,9 +93,24 @@ int main()
                     ottieniInfo(matricola);
                     break;
                 case 3:
+                    printf("\nMEDIA DEGLI STUDENTI CHE HANNO COMPLETATO IL CORSO");
                     mediaStudenti();
                 case 4:
-                    //MODIFICA IL PROFILO DI UNO STUDENTE
+                    verifica=0;
+                    while (matricola<1 || matricola>99999 || verifica==0){
+                        printf("Inserisci il numero di matricola dello studente da cercare: ");
+                        verifica=scanf("%d",&matricola);
+                        fflush(stdin);
+                        if (verifica!=1){
+                            printf("\nMATRICOLA INSERITA ERRATA");
+                            verifica=0;
+                        }
+                        if (matricola<1 || matricola>99999){
+                            printf("\nLe matricole sono comprese tra 1 e 99999\n");
+                        }
+                    }
+                    modificaPianoStudi(matricola);
+                    break;
                 default:
                     return 0;
                     break;
@@ -108,7 +121,6 @@ int main()
 }
 
 void aggiungiStudente(){
-
 
     if (nStudenti<=NUM_STUDENTI) {
         int verifica=0;
@@ -126,12 +138,13 @@ void aggiungiStudente(){
             int numero=studente.matricola;
             while (numero%10!=0){ //FACCIO UN CICLO PER CONTARE IL NUMERO DI CIFRE E VERIFICARE CHE QUESTA SIA FATTA DI 5 MAX 5 CIFRE
                     numero/=10;
-                    counter++;0
+
                     if (counter>LENMATRICOLA-1){
                         verifica=0;
                         printf("\t La matricola deve contenere massimo 5 cifre\n");
                         break;
                     }
+                    counter++;
             }
             //SE LA MATRICOLA DELLO STUDENTE E' GIà PRESENTE
             for (int i=0;i<NUM_ESAMI;i++){
@@ -211,7 +224,6 @@ void aggiungiStudente(){
                     {
                         studente.pianoStudi[cont].voto=votoInserito;
                         studente.pianoStudi[cont].codice=codiceInserito;
-                        printf("Posizione studente: %d POSIZIONE NEL PIANO STUDI: %d\n",nStudenti,cont);
                         cont++;
                         ins_scelto[i]=false; //setto a false la possibilita di scegliere la materia
                         break;
@@ -254,8 +266,6 @@ void ottieniInfo(int matricola){
     }
 }
 
-
-
 void mediaStudenti(){
     int sommaCrediti=0; //SOMMA DEI CREDITI TOTALI DEL CORSO
     bool completo=false; //TRUE se lo studente ha completato il piano di studi, FALSE se non lo ha completato
@@ -266,7 +276,6 @@ void mediaStudenti(){
     int somma;
     int mediaP;
     int i; //contatore del for, che mi serve anche come indice dello studente
-    int k; //contatore de
     for (i=0;i<nStudenti;i++){ //per ogni studente
         mediaP=0;
         somma=0;
@@ -289,5 +298,34 @@ void mediaStudenti(){
     }
 }
 
+void modificaPianoStudi(int matricola){
 
+    ottieniInfo(matricola); //STAMPO LE INFORMAZIONI DELLA MATRICOLA
+    bool presente=false;
+    for (int i=0;i<nStudenti;i++){
+        if (studenti[i].matricola==matricola){ //se trovo lo studente con la matricola ricercata
+            presente=true;
+            break;
+        }
+        else{
+            printf("La matricola richiesta non esiste\n");
+            break;
+        }
+    }
 
+    int codice=0;
+    int verifica=0;
+    if (presente==true){ //se c'è la matricola, allora chiedo che voto vuole modificare
+        printf("Inserisci CODICE INSEGNAMENTO: ");
+        scanf("%d",&codice);
+        fflush(stdin);
+        if (verifica!=1){
+            printf("Valore inserito errato");
+        }
+        for (int i =0;i<NUM_ESAMI;i++){
+            if (studente[i].pianoStudi){
+
+            }
+        }
+    }
+}
