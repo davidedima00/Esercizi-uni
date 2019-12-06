@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#define MAX_STUDENTI 2
+#define MAX_STUDENTI 50
 #define NUM_ESAMI 5
 #define MAX_INSEGNAMENTI 10
 //Prototipi delle funzioni
@@ -16,7 +16,7 @@ void Media();
 
 int contStudenti = 0; //Variabile globale che memorizza il numero di studenti presenti
 int verificaScanf = 0; //Variabile globale per la verifica di tutti gli scanf
-int dim=1; //dimensione studenti
+int dim=10; //dimensione studenti
 
 typedef struct Studente
 {
@@ -60,7 +60,7 @@ bool AggiungiStudente(){
         return false;
     }
 
-	if (contStudenti==dim){
+	if (contStudenti%dim==0){
         dim*=2;
         studenti=(STUDENTE*) realloc(studenti,dim);
         if (studenti==NULL){
