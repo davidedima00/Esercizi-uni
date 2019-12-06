@@ -16,7 +16,7 @@ void Media();
 
 int contStudenti = 0; //Variabile globale che memorizza il numero di studenti presenti
 int verificaScanf = 0; //Variabile globale per la verifica di tutti gli scanf
-int dim=10; //dimensione studenti
+int dim=10; //dimensione iniziale studenti
 
 typedef struct Studente
 {
@@ -32,8 +32,7 @@ typedef struct Studente
 
 }STUDENTE;
 
-STUDENTE *studenti;
-
+STUDENTE *studenti=NULL;
 struct Insegnamento {
 	int codice;
 	char descrizione[100];
@@ -60,10 +59,10 @@ bool AggiungiStudente(){
         return false;
     }
 
-	if (contStudenti%10==0){ //se il numero di studenti è divisibile per la dim iniziale (10) allora
-        dim*=2; //raddoppio la dimensione della lista
-        studenti=(STUDENTE*) realloc(studenti,dim); //rialloco lo spazio
-        if (studenti==NULL){
+	if (contStudenti%10==0){ //verifico se il contStudenti è divisibile per 10
+        dim*=2; //se lo è, raddoppio la dimensione allocata dal vettore
+        studenti=(STUDENTE*) realloc(studenti,dim); 
+        if (studenti==NULL){ //se l'allocazione fallisce
             printf("Memoria insufficiente per allocare lo spazio del vettore");
             free(studenti); //chiudo l'esecuzione
             return false;
@@ -311,3 +310,4 @@ int main() {
 	getchar();
 	return 0;
 }
+
