@@ -60,9 +60,9 @@ bool AggiungiStudente(){
         return false;
     }
 
-	if (contStudenti%dim==0){
-        dim*=2;
-        studenti=(STUDENTE*) realloc(studenti,dim);
+	if (contStudenti%10==0){ //se il numero di studenti è divisibile per la dim iniziale (10) allora
+        dim*=2; //raddoppio la dimensione della lista
+        studenti=(STUDENTE*) realloc(studenti,dim); //rialloco lo spazio
         if (studenti==NULL){
             printf("Memoria insufficiente per allocare lo spazio del vettore");
             free(studenti); //chiudo l'esecuzione
